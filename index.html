@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>eShop</title>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <input type="text" class="goods-search" v-model="searchLine" placeholder="Поиск товара"/>
+      <button class="search-button" type="button" v-on:click="onSearch">Искать</button>
+      <button class="cart-button" type="button" v-on:click="onTogleCart">Корзина</button>
+    </header>
+    <main>
+
+      <div class="goods-list">
+          <div class="good-card" v-for="good of filteredGoods" v-bind:key="good.id_product">
+            <h2 v-on:click="addToCart(good)">{{ good.product_name }}</h2>
+            <p>${{ good.price }}</p>
+          </div>
+        
+
+        <div class="good-card" v-for="good of filteredGoods" v-bind:key="good.id_product">
+          <h2 v-on:click="addToCart(good)">{{ good.product_name }}</h2>
+          <p>${{ good.price }}</p>
+        </div>
+      </div>
+    </main>
+    <div class="modal" v-if="isVisibleCart">
+         <span class="close" v-on:click="onTogleCart">x</span>
+
+         <div class="goods-list">
+          <div class="good-card" v-for="good of cart" v-bind:key="good.id_product">
+            <h2>{{ good.product_name }}</h2>
+            <p>${{ good.price }}</p>
+            <button v-on:click="removeFromCart">X</button>
+          </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

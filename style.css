@@ -1,0 +1,16 @@
+.modal{
+    width: 450px;
+    height: 350px;
+    position: absolute;
+    top: 58px;
+    margin-left: 110px;
+    border: 1px solid red;
+    border-radius:  3px;
+    background-color: white;
+
+}
+.close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
